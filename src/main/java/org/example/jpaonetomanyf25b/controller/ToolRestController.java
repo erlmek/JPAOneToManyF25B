@@ -1,6 +1,8 @@
 package org.example.jpaonetomanyf25b.controller;
 
+import org.example.jpaonetomanyf25b.model.Kommune;
 import org.example.jpaonetomanyf25b.model.Region;
+import org.example.jpaonetomanyf25b.service.ApiServiceGetKommuner;
 import org.example.jpaonetomanyf25b.service.ApiServiceGetRegioner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +18,19 @@ public class ToolRestController {
     @Autowired
     ApiServiceGetRegioner apiServiceGetRegioner;
 
+    @Autowired
+    ApiServiceGetKommuner apiServiceGetKommuner;
+
+
     @GetMapping("getregioner")
     public List<Region> getRegioner() {
         return apiServiceGetRegioner.getRegioner();
     }
 
-
+    @GetMapping("getkommuner")
+    public List<Kommune> getKommuner() {
+        return apiServiceGetKommuner.getKommuner();
+    }
 
 
 }
