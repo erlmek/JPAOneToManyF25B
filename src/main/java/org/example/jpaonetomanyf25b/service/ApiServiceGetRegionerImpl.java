@@ -28,11 +28,13 @@ public class ApiServiceGetRegionerImpl implements ApiServiceGetRegioner{
     }
     @Override
     public List<Region> getRegioner() {
-        List<Region> regioner = restClient.get()
+        RestClient.ResponseSpec responseSpec = restClient.get()
                 .uri(regionUrl)
                 .header("Accept-Encoding", "identity")
-                .retrieve()
-                .body(new ParameterizedTypeReference<List<Region>>() {});
+                .retrieve();
+
+        List<Region> regioner = responseSpec.body(new ParameterizedTypeReference<List<Region>>() {});
+
         if (regioner != null) {
             saveRegioner(regioner);
         }
