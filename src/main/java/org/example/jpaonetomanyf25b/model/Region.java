@@ -1,5 +1,6 @@
 package org.example.jpaonetomanyf25b.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,6 +18,7 @@ public class Region {
     private String href;
 
     @OneToMany(mappedBy = "region")
+    @JsonBackReference
     private List<Kommune> kommuner;
 
     public List<Kommune> getKommuner() {
